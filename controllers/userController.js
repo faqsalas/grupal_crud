@@ -1,4 +1,4 @@
-const userModel = require("../models/userModel");
+const userModel = require("../models/userModel.js");
 
 const getUsers = (req, res) => {
   res.json(userModel.getUsers());
@@ -7,7 +7,7 @@ const getUsers = (req, res) => {
 const getUserById = (req, res) => {
   const user = userModel.getUserById(req.params.id);
   if (user) {
-    res.status(200).json(user);
+    res.status(202).json(user);
   } else {
     res.status(404).json({ message: "Usuario no encontrado" });
   }
@@ -25,7 +25,7 @@ const createUser = (req, res) => {
 const updateUser = (req, res) => {
   const updatedUser = userModel.updateUser(req.params.id, req.body);
   if (updatedUser) {
-    res.status(404).json(updatedUser);
+    res.status(202).json(updatedUser);
   } else {
     res.status(404).json({ message: "Usuario no encontrado" });
   }
